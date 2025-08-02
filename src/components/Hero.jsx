@@ -146,7 +146,7 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-red-700 text-xl">
+            <h1 className="hero-heading special-font text-xl text-red-700">
             <b>S h i n o  b i</b>
             </h1>
 
@@ -155,11 +155,18 @@ const Hero = () => {
             </p>
 
             <Button
-              id="watch-trailer"
-              title="Download"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-blue-700 flex-center gap-1 text-bold text-white   "
-            />
+            id="watch-trailer"
+            title="Download"
+            leftIcon={<TiLocationArrow />}
+            style={{ 
+              backgroundColor: '#fca5a5', 
+              color: '#000',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.25rem'
+              }}
+/>
           </div>
         </div>
       </div>
