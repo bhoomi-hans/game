@@ -155,18 +155,12 @@ const Hero = () => {
             </p>
 
             <Button
-            id="watch-trailer"
-            title="Download"
-            leftIcon={<TiLocationArrow />}
-            style={{ 
-              backgroundColor: '#fca5a5', 
-              color: '#000',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.25rem'
-              }}
-/>
+              id="watch-trailer"
+              title="Download"
+              leftIcon={<TiLocationArrow />}
+              containerClass="bg-blue-300 flex-center gap-1 text-bold text-black   "
+            />
+
           </div>
         </div>
       </div>
