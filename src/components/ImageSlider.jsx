@@ -3,8 +3,38 @@ import "./ImageSlider.css";
 import { IoIosArrowBack } from "react-icons/io";
 import gsap from "gsap";
 
+ 
 const imageData = [
-  // Your image data remains the same
+  {
+  src: "/img/1.jpg",
+    title: "New Characters",
+    description: "Once a shadow. Now a blade.",
+  },
+  {
+    src: "/img/2.jpg",
+    title: "New Map Areas To Discover",
+    description: "Discover hidden trails and secret paths",
+  },
+  {
+    src: "/img/3.jpg",
+    title: "Mythic Unveil",
+    description: "Beyond memory. Beyond myth. The next Entity arrives.",
+  },
+  {
+    src: "/img/4.jpg",
+    title: "Power Surge Variant",
+    description: " New drop. Zero mercy. Equip the echo of chaos.",
+  },
+  {
+    src: "/img/5.jpg",
+    title: "Red Thread Of Fate",
+    description: "Bound By Echoes. Split By Fate.New Quests Await.",
+  },
+  {
+    src: "/img/6.jpg",
+    title: "New Bosses",
+    description: "Abyss-born adversaries emerge",
+  },
 ];
 
 function ImageSlider() {
@@ -12,41 +42,69 @@ function ImageSlider() {
   const [rightImage, setRightImage] = useState(1);
   const [leftImage, setLeftImage] = useState(imageData.length - 1);
 
-  // Your useEffect and animation logic remains the same
+  useEffect(() => {
+    if (midImage === 0) {
+      setLeftImage(imageData.length - 1);
+      setRightImage(1);
+    } else if (midImage === imageData.length - 1) {
+      setRightImage(0);
+      setLeftImage(midImage - 1);
+    } else {
+      setRightImage(midImage + 1);
+      setLeftImage(midImage - 1);
+    }
+  }, [midImage]);
+
+  const animateSlider = (direction) => {
+    //   middle image
+    gsap.fromTo(
+      ".middleImage",
+      { x: direction === "right" ? -200 : 200, opacity: 0, scale: 0.6 },
+      { x: 0, opacity: 1, scale: 1, duration: 0.5 }
+    );
+
+    //   right image
+    gsap.fromTo(
+      ".rightImage",
+      { x: 600, opacity: 0, scale: 0.6 },
+      { x: 0, opacity: 1, scale: 1, duration: 0.5 }
+    );
+
+    //   left image
+    gsap.fromTo(
+      ".leftImage",
+      { x: -500, opacity: 0, scale: 0.6 },
+      { x: 0, opacity: 1, scale: 1, duration: 0.5 }
+    );
+
+    //text content
+    gsap.fromTo(
+      ".image-content",
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 }
+    );
+  };
+
+  const handleIncrement = () => {
+    setMidImage((prev) => (prev === imageData.length - 1 ? 0 : prev + 1));
+    animateSlider("right");
+  };
+
+  const handleDecrement = () => {
+    setMidImage((prev) => (prev === 0 ? imageData.length - 1 : prev - 1));
+    animateSlider("left");
+  };
 
   return (
-    <div className="ImageSlider">
+        <div className="ImageSlider">
+       
       <div className="version-highlights">
-        <p className="text-black text-sm special-font hero-heading">
-          Version 2.7
+        <p className=" text-black fontSize:12px special-font hero-heading ">
+          Version 2.7  
         </p>
       </div>
-      
       <div className="ImageSliderContainer">
-        {/* Mobile-first structure */}
-        <div className="mobile-layout md:hidden">
-          {/* Large centered image */}
-          <div className="mobile-image-container">
-            <img
-              src={imageData[midImage].src}
-              alt={imageData[midImage].title}
-              className="middleImage w-full h-auto max-h-[70vh] object-contain"
-            />
-          </div>
-          
-          {/* Text content below image */}
-          <div className="image-content mt-4 text-center">
-            <p className="font-circular-web text-lg text-black">
-              {imageData[midImage].title}
-            </p>
-            <p className="max-w-md font-circular-web text-sm text-black opacity-50 mx-auto">
-              {imageData[midImage].description}
-            </p>
-          </div>
-        </div>
-
-        {/* Desktop layout */}
-        <div className="Images hidden md:block">
+        <div className="Images">
           <img
             src={imageData[rightImage].src}
             alt={imageData[rightImage].title}
@@ -60,9 +118,11 @@ function ImageSlider() {
               className="middleImage"
             />
             <div className="image-content">
+               
               <p className="font-circular-web text-lg text-black">
                 {imageData[midImage].title}
               </p>
+             
               <p className="max-w-md font-circular-web text-sm text-black opacity-50">
                 {imageData[midImage].description}
               </p>
@@ -77,18 +137,16 @@ function ImageSlider() {
         </div>
       </div>
 
-      {/* Navigation buttons - positioned below text on mobile */}
-      <div className="buttons flex justify-center mt-6 md:mt-0">
-        <button className="slider-button leftButton mr-4" onClick={handleDecrement}>
+      <div className="buttons">
+        <button className="slider-button leftButton" onClick={handleDecrement}>
           <IoIosArrowBack size={24} />
         </button>
         <button className="slider-button rightButton" onClick={handleIncrement}>
-          <IoIosArrowBack size={24} className="transform rotate-180" />
+          <IoIosArrowBack size={24} />
         </button>
       </div>
 
-      {/* Dots navigation */}
-      <div className="dotsPlace mt-6">
+      <div className="dotsPlace">
         {imageData.map((_, index) => (
           <div
             key={index}
