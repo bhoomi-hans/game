@@ -6,32 +6,32 @@ import gsap from "gsap";
  
 const imageData = [
   {
-    src: "public/img/1.jpg",
+  src: "/img/1.jpg",
     title: "New Characters",
     description: "Once a shadow. Now a blade.",
   },
   {
-    src: "public/img/2.jpg",
+    src: "/img/2.jpg",
     title: "New Map Areas To Discover",
     description: "Discover hidden trails and secret paths",
   },
   {
-    src: "public/img/3.jpg",
+    src: "/img/3.jpg",
     title: "Mythic Unveil",
     description: "Beyond memory. Beyond myth. The next Entity arrives.",
   },
   {
-    src: "public/img/4.jpg",
+    src: "/img/4.jpg",
     title: "Power Surge Variant",
     description: " New drop. Zero mercy. Equip the echo of chaos.",
   },
   {
-    src: "public/img/5.jpg",
+    src: "/img/5.jpg",
     title: "Red Thread Of Fate",
     description: "Bound By Echoes. Split By Fate.New Quests Await.",
   },
   {
-    src: "public/img/6.jpg",
+    src: "/img/6.jpg",
     title: "New Bosses",
     description: "Abyss-born adversaries emerge",
   },

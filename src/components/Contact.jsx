@@ -39,7 +39,7 @@ const Contact = () => {
             className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
           />
 
-          <Button title="contact US" containerClass="mt-10 cursor-pointer bg-red-500" />
+          <Button title="contact US" containerClass="mt-10 cursor-pointer bg-red-700 text-bold" />
         </div>
       </div>
     </div>
