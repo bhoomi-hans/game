@@ -22,12 +22,12 @@ const imageData = [
   {
     src: "/img/4.jpg",
     title: "Power Surge Variant",
-    description: " New drop. Zero mercy. Equip the echo of chaos.",
+    description: "New drop. Zero mercy. Equip the echo of chaos.",
   },
   {
     src: "/img/5.jpg",
     title: "Red Thread Of Fate",
-    description: "Bound By Echoes. Split By Fate.New Quests Await.",
+    description: "Bound By Echoes. Split By Fate. New Quests Await.",
   },
   {
     src: "/img/6.jpg",
@@ -90,10 +90,25 @@ function ImageSlider() {
     animateSlider("left");
   };
 
+  // Split title into words and description into sentences
+  const formatTitle = (title) => {
+    return title.split(' ').map((word, index) => (
+      <div key={index} className="title-line">{word}</div>
+    ));
+  };
+
+  const formatDescription = (description) => {
+    return description.split('. ')
+      .filter(sentence => sentence.trim() !== '')
+      .map((sentence, index) => (
+        <div key={index} className="description-line">{sentence.trim()}</div>
+      ));
+  };
+
   return (
     <div className="ImageSlider">
       <div className="version-highlights">
-        <p className=" text-black fontSize:12px special-font hero-heading ">
+        <p className="text-black text-sm special-font hero-heading">
           Version 2.7
         </p>
       </div>
@@ -106,7 +121,6 @@ function ImageSlider() {
           />
 
           <div className="center-content">
-            {/* Mobile-specific image wrapper */}
             <div className="mobile-image-wrapper">
               <img
                 src={imageData[midImage].src}
@@ -116,12 +130,12 @@ function ImageSlider() {
             </div>
             
             <div className="image-content">
-              <p className="font-circular-web text-lg text-black">
-                {imageData[midImage].title}
-              </p>
-              <p className="max-w-md font-circular-web text-sm text-black opacity-50">
-                {imageData[midImage].description}
-              </p>
+              <div className="title-block">
+                {formatTitle(imageData[midImage].title)}
+              </div>
+              <div className="description-block">
+                {formatDescription(imageData[midImage].description)}
+              </div>
             </div>
           </div>
 
@@ -138,7 +152,7 @@ function ImageSlider() {
           <IoIosArrowBack size={24} />
         </button>
         <button className="slider-button rightButton" onClick={handleIncrement}>
-          <IoIosArrowBack size={24} />
+          <IoIosArrowBack size={24} className="rotate-180" />
         </button>
       </div>
 
