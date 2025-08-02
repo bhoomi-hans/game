@@ -3,10 +3,9 @@ import "./ImageSlider.css";
 import { IoIosArrowBack } from "react-icons/io";
 import gsap from "gsap";
 
- 
 const imageData = [
   {
-  src: "/img/1.jpg",
+    src: "/img/1.jpg",
     title: "New Characters",
     description: "Once a shadow. Now a blade.",
   },
@@ -56,28 +55,24 @@ function ImageSlider() {
   }, [midImage]);
 
   const animateSlider = (direction) => {
-    //   middle image
     gsap.fromTo(
       ".middleImage",
       { x: direction === "right" ? -200 : 200, opacity: 0, scale: 0.6 },
       { x: 0, opacity: 1, scale: 1, duration: 0.5 }
     );
 
-    //   right image
     gsap.fromTo(
       ".rightImage",
       { x: 600, opacity: 0, scale: 0.6 },
       { x: 0, opacity: 1, scale: 1, duration: 0.5 }
     );
 
-    //   left image
     gsap.fromTo(
       ".leftImage",
       { x: -500, opacity: 0, scale: 0.6 },
       { x: 0, opacity: 1, scale: 1, duration: 0.5 }
     );
 
-    //text content
     gsap.fromTo(
       ".image-content",
       { y: 50, opacity: 0 },
@@ -96,11 +91,10 @@ function ImageSlider() {
   };
 
   return (
-        <div className="ImageSlider">
-       
+    <div className="ImageSlider">
       <div className="version-highlights">
         <p className=" text-black fontSize:12px special-font hero-heading ">
-          Version 2.7  
+          Version 2.7
         </p>
       </div>
       <div className="ImageSliderContainer">
@@ -112,17 +106,19 @@ function ImageSlider() {
           />
 
           <div className="center-content">
-            <img
-              src={imageData[midImage].src}
-              alt={imageData[midImage].title}
-              className="middleImage"
-            />
+            {/* Mobile-specific image wrapper */}
+            <div className="mobile-image-wrapper">
+              <img
+                src={imageData[midImage].src}
+                alt={imageData[midImage].title}
+                className="middleImage"
+              />
+            </div>
+            
             <div className="image-content">
-               
               <p className="font-circular-web text-lg text-black">
                 {imageData[midImage].title}
               </p>
-             
               <p className="max-w-md font-circular-web text-sm text-black opacity-50">
                 {imageData[midImage].description}
               </p>
