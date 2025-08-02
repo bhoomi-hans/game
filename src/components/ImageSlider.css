@@ -36,7 +36,7 @@
     width: 150px;
     object-fit: cover;
     border-radius: 10px;
-    transform: translateX(-40px);git push origin main
+    transform: translateX(-40px);
     z-index: -9;
     filter: blur(3px) saturate(0.5);
 }
